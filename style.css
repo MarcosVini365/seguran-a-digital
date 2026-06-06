@@ -1,0 +1,20 @@
+body{
+    background-color: #040d1a;
+    min-width: 100vh;
+    overflow-x: hiiden;
+}
+
+.container-master{
+    position: relative; z-index: 1;
+}
+
+
+
+
+
+
+/*==== HERO ====*/
+.hero {
+      padding: 100px 0 60px;
+      text-align: center;
+}
