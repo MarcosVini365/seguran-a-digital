@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container-master">
+    <div class="site-wrapper">
 
         <!--Navbar-->
-        <nav class="navbar">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
-                <p>Segurança Digital</p>
+                <a class="navbar-brand" href="#">Segurança <span>Digital</span></a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <i class="bi bi-list text-light fs-4"></i>
                 </button>
@@ -35,10 +38,11 @@
             </div>
         </nav>
 
+        <!--HERO-->
         <section class="hero">
             <div class="container">
                 <h1 class="hero-title">Sua senha é
-                    <br><span class="h1">realmente segura?</span>
+                    <br><span class="">realmente segura?</span>
                 </h1>
                 <p class="hero-sub">
                     Teste a força da sua senha em tempo real, entenda os critérios de segurança e aprenda a proteger seus dados digitais.
@@ -47,8 +51,108 @@
                     Testar agora <i class="bi bi-arrow-down ms-1"></i>
                 </a>
             </div>
-
         </section>
+
+        <!--Validador de senhas-->
+        <section id="validador" class="pb-5">
+            <div class="container">
+                <!--INPUT-->
+                <div class="validator-card">
+                    <p>Digite sua senha para análise</p>
+                    <div class="input-wrapper">
+                        <input type="password" class="password-input" id="pwdInput" 
+                            placeholder="••••••••••••" autocomplete="off" spellcheck="false"/>
+                        <button class="toggle-eye" id="toggleEye" title="Mostrar/ocultar senha">
+                            <i class="bi bi-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+
+                    <!--Medidor-->
+                    <div class="strength-section">
+                        <div class="strength-label-row">
+                            <span class="strength-text s0" id="strengthText">Aguardando...</span>
+                            <span class="strength-pct" id="strengthPct">0%</span>
+                        </div>
+                        <div class="strength-bars" id="strengthBars">
+                            <div class="bar-seg"></div>
+                            <div class="bar-seg"></div>
+                            <div class="bar-seg"></div>
+                            <div class="bar-seg"></div>
+                            <div class="bar-seg"></div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+                    <!-- criterios -->
+                    <div class="criteria-grid" id="criteriaGrid">
+                    <div class="criteria-item" data-crit="length"><span class="ci-icon"><i class="bi bi-circle"></i></span> Mínimo 8 caracteres</div>
+                    <div class="criteria-item" data-crit="upper"><span class="ci-icon"><i class="bi bi-circle"></i></span> Letra maiúscula</div>
+                    <div class="criteria-item" data-crit="lower"><span class="ci-icon"><i class="bi bi-circle"></i></span> Letra minúscula</div>
+                    <div class="criteria-item" data-crit="number"><span class="ci-icon"><i class="bi bi-circle"></i></span> Número (0–9)</div>
+                    <div class="criteria-item" data-crit="special"><span class="ci-icon"><i class="bi bi-circle"></i></span> Caractere especial</div>
+                    <div class="criteria-item" data-crit="long"><span class="ci-icon"><i class="bi bi-circle"></i></span> 12+ caracteres</div>
+                    </div>
+
+                    <!-- Tempo de Crack e entropia -->
+                    <div class="crack-box">
+                    <span class="crack-icon"><i class="bi bi-cpu"></i></span>
+                    <div>
+                        <div class="crack-label">Estimativa para quebrar</div>
+                        <div class="crack-value" id="crackTime">—</div>
+                    </div>
+                    </div>
+
+                    <div class="entropy-row">
+                    <div class="entropy-chip">
+                        <div class="ec-val" id="entropyVal">0</div>
+                        <div class="ec-lbl">bits de entropia</div>
+                    </div>
+                    <div class="entropy-chip">
+                        <div class="ec-val" id="charsetVal">0</div>
+                        <div class="ec-lbl">charset size</div>
+                    </div>
+                    <div class="entropy-chip">
+                        <div class="ec-val" id="lengthVal">0</div>
+                        <div class="ec-lbl">comprimento</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dicas -->
+        <section id="dicas" class="tips-section">
+            <div class="container">
+            <h2 class="section-title">Dicas de Segurança</h2>
+            <p class="section-sub">Boas práticas para proteger seus dados no mundo digital.</p>
+
+            <!-- Rotativo -->
+            <div class="rotating-banner">
+                <i class="bi bi-lightbulb-fill rb-icon"></i>
+                <div class="rb-text" id="rotatingTip">Carregando dica...</div>
+            </div>
+
+            <!-- Cards -->
+            <div class="row g-4" id="tipsGrid">
+                <!-- cards injected by JS -->
+            </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="container">
+            <p>Atividade Extensionista · Segurança de Senhas e Dados &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/marcos-vinicius-alves-a10a8123b" target="_blank"><i class="bi bi-github me-1"></i>GitHub</a>
+            </p>
+            <p class="mt-1" style="font-size:.7rem;opacity:.5;">Nenhuma senha é enviada ou armazenada. Tudo ocorre localmente no seu navegador.</p>
+            </div>
+        </footer>
     </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/password-analysis.js"></script>
+    <script src="js/tips.js"></script>
+    <script src="js/theme-toggle.js"></script>
 </body>
 </html>
